@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Eregistracija - uredi lokaciju</title>
+  <title>Eregistracija - dodaj osiguranje</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      display: inline-block;
+      margin: 20px;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h2 {
+      font-size: 24px;
+      margin: 20px;
+    }
+
+    .card p {
+      font-size: 14px;
+      margin: 20px;
+      text-align: left;
+    }
+
+    .btn {
+      background-color: dodgerblue;
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+    }
+  </style>
+
+</head>
+<body>
+<div class="forma">
+  <div class="container">
+    <h1>Uredi vozilo</h1>
+    <form th:action="@{/vozila/update/{id}(id=${vozilo.id})}" method="post" th:object="${vozilo}">
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Registracijska oznaka: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('registracijskaO')}" type="text" th:field="*{registracijskaO}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('registracijskaO')}" type="text" th:field="*{registracijskaO}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('registracijskaO')}" th:errors="*{registracijskaO}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Grad registracije: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('gradR')}" type="text" th:field="*{gradR}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('gradR')}" type="text" th:field="*{gradR}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('gradR')}" th:errors="*{gradR}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Godina registracije: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('godinaR')}" type="text" th:field="*{godinaR}"
+                 class="form-control"/>
+          <input th:if="${#fields.hasErrors('godinaR')}" type="text" th:field="*{godinaR}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('godinaR')}" th:errors="*{godinaR}" class="invalid-feedback"></div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Marka vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('markaV')}" type="text" th:field="*{markaV}"
+                 class="form-control"/>
+          <input th:if="${#fields.hasErrors('markaV')}" type="text" th:field="*{markaV}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('markaV')}" th:errors="*{markaV}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Godina proizvodnje: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('godinaP')}" type="text" th:field="*{godinaP}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('godinaP')}" type="text" th:field="*{godinaP}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('godinaP')}" th:errors="*{godinaP}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Model vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('modelV')}" type="text" th:field="*{modelV}"
+                 class="form-control"/>
+          <input th:if="${#fields.hasErrors('modelV')}" type="text" th:field="*{modelV}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('modelV')}" th:errors="*{modelV}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Vrsta vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('vrstaV')}" type="text" th:field="*{vrstaV}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('vrstaV')}" type="text" th:field="*{vrstaV}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('vrstaV')}" th:errors="*{vrstaV}" class="invalid-feedback"></div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Broj sasije: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('brojS')}" type="text" th:field="*{brojS}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('brojS')}" type="text" th:field="*{brojS}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('brojS')}" th:errors="*{brojS}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Masa vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('masa')}" type="text" th:field="*{masa}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('masa')}" type="text" th:field="*{masa}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('masa')}" th:errors="*{masa}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Nosivost vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('dopustenaN')}" type="text" th:field="*{dopustenaN}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('dopustenaN')}" type="text" th:field="*{dopustenaN}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('dopustenaN')}" th:errors="*{dopustenaN}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Broj mjesta: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('brojMjesta')}" type="text" th:field="*{brojMjesta}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('brojMjesta')}" type="text" th:field="*{brojMjesta}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('brojMjesta')}" th:errors="*{brojMjesta}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Obujam motora: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('obujamM')}" type="text" th:field="*{obujamM}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('obujamM')}" type="text" th:field="*{obujamM}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('obujamM')}" th:errors="*{obujamM}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Snaga motora: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('snagaM')}" type="text" th:field="*{snagaM}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('snagaM')}" type="text" th:field="*{snagaM}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('snagaM')}" th:errors="*{snagaM}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Vrsta goriva: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('gorivo')}" type="text" th:field="*{gorivo}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('gorivo')}" type="text" th:field="*{gorivo}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('gorivo')}" th:errors="*{gorivo}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Broj motora vozila: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('brojM')}" type="text" th:field="*{brojM}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('brojM')}" type="text" th:field="*{brojM}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('brojM')}" th:errors="*{brojM}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Katalizator: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('katalizator')}" type="text" th:field="*{katalizator}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('katalizator')}" type="text" th:field="*{katalizator}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('katalizator')}" th:errors="*{katalizator}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-4 col-form-label">Boja: </label>
+        <div class="col-8">
+          <input th:unless="${#fields.hasErrors('boja')}" type="text" th:field="*{boja}" class="form-control"/>
+          <input th:if="${#fields.hasErrors('boja')}" type="text" th:field="*{boja}"
+                 class="form-control  is-invalid"/>
+          <div th:if="${#fields.hasErrors('boja')}" th:errors="*{boja}" class="invalid-feedback"></div>
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary">Uredi vozilo</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>E-registracija</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="logo2.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+  <style>
+
+    a{
+      color: #000000;
+    }
+
+    a:link{color: #000000;
+    }
+
+    a:hover { color: #000000;
+    }
+
+    a:active { color: #000000;
+    }
+
+    a:visited { color: #000000;
+    }
+
+    #ikona {
+
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 1;
+      order: 0;
+      top:0;
+      left:0;
+      flex-basis: auto;
+      align-self: auto;}
+
+    .nav-item{
+      display: block;
+      margin: -35px 10px;
+      z-index: 100000;
+    }
+
+
+    .navImg{
+      margin: 1px 60px;
+    }
+
+    .container-fluid{
+      position: relative;
+      min-height: 60px;
+      float: left;
+      padding: -1px;
+      margin: 3px;
+      cursor: pointer;
+      color: black;
+      font-weight: 600;
+      width: 48px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .nav-link{
+      display: block;
+      padding: 10px 20px;
+      color: #000; /* Promijenjena boja slova na crnu */
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .nav-link:hover {
+      background-color: #ddd;
+      color: #000;
+    }
+
+    .nav-link.active {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+
+    #footer{
+      padding: 0px;
+      position:absolute;
+      bottom:20px;
+      width:100%;
+      left: 1100px;
+      color: #000;
+
+    }
+
+    #footer1{
+      color:black;
+      font-size: 20px;
+      font-family:'Inter', sans-serif;
+      -webkit-text-fill-color: #000;
+      -webkit-text-stroke-width: 0.3px;
+      -webkit-text-stroke-color: mistyrose;
+    }
+
+    #ikone{
+      display: flex;
+      padding: 0px;
+      width: 100%;
+      align-items: center;
+    }
+
+
+    #pozdrav_text{
+      margin: 0;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size:300%;
+      font-weight:bold;
+      font-family:'Inter', sans-serif;
+      text-align: center;
+      color:#ffffff
+    }
+
+    #pozadina{
+      width:auto;
+      max-width: 100%;
+      height: auto;
+      background-repeat:no-repeat;
+      background-size: cover;
+      background-position: 0 50px;
+      overflow-x: hidden;
+    }
+
+    #pozdrav_text{
+      position: relative;
+      top: 55px;
+      color: #000;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 40px;
+      font-weight: bold;
+      -webkit-text-fill-color: #000;
+      -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: crimson;
+    }
+
+    #logo{
+      margin-left: 15px;
+    }
+
+
+    .ikona{
+      position: relative;
+      width: 26px;
+      height: 26px;
+      margin-right: 15px;
+      margin-bottom: -75px;
+      left: -1px;
+      bottom: 40px;
+    }
+
+    .dropdown-menu{
+      position: absolute;
+      left: -80px;
+      top: 45px;
+    }
+
+    .footerLetak{
+      position: absolute;
+      font-size: 16px;
+      font-weight: 500;
+      bottom: 45px;
+      left: 15px;
+    }
+
+    .footerInput{
+      position: absolute;
+      padding: 5px;
+      bottom: 17px;
+      left: 15px;
+      height: 30px;
+      width: 200px;
+    }
+
+    .footerButton{
+      position: absolute;
+      padding: 5px;
+      cursor: pointer;
+      bottom: 17px;
+      height: 30px;
+      left: 220px;
+      width: 140px;
+      justify-content: center;
+      display: flex;
+      padding: 0px 5px;
+    }
+
+
+
+  </style>
+</head>
+<body background="cars.png" id="pozadina">
+
+<header class="navbar bg-white navbar-light sticky-top flex-md-nowrap p-0 shadow">
+  <div id="logo"><img src="logo2.png" alt="E-registracija logo" width="100px" height="70px"></div>
+
+  <a href="#" class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6">E-registracija</a>
+  <div>
+
+    <div class="dropdown text-end">
+      <a class="btn-outline btn dropdown-toggle mt-2 mb-2 mr-5" data-bs-toggle="dropdown"
+         th:text="${userDetails.getFullName()}" href="#"></a>
+      <ul class="dropdown-menu">
+        <li>
+          <form th:action="@{/logout}" method="post">
+            <input class="dropdown-item" type="submit" value="Odjava"/>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="layout.html"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <img src="./usersicon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Korisnici')} ? 'nav-link active' : 'nav-link'" href="/users">Korisnici</a></li>
+        <li class="nav-item">
+          <img src="./driver-icon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Vozaci')} ? 'nav-link active' : 'nav-link'" href="/vozaci">Vozaci</a></li>
+        <li class="nav-item">
+          <img src="./carsicon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Vozila')} ? 'nav-link active' : 'nav-link'" href="/vozila">Vozila</a></li>
+        <li class="nav-item">
+          <img src="./locationicon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Lokacije')} ? 'nav-link active' : 'nav-link'" href="/lokacije">Lokacije</a></li>
+        <li class="nav-item">
+          <img src="./insuranceicon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Osiguranja')} ? 'nav-link active' : 'nav-link'" href="/osiguranja">Osiguranja</a></li>
+        <li class="nav-item">
+          <img src="./licence-icon.png" width="48" height="48" alt="" class="navImg">
+          <a th:class="${#strings.equals(activeLink, 'Registracije')} ? 'nav-link active' : 'nav-link'" href="/registracije">Registracije</a></li>
+      </ul>
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div id="pozdrav_text"><p>Dobro došli na E-registracija<br></p></div>
+<div id="footer">
+  <div id="footer1">
+    <h3>Pratite nas:</h3>
+  </div>
+  <div id="ikone">
+    <a href="https://www.facebook.com/">
+      <img src="Facebook_Logo_(2019).png" alt="" class="ikona">
+    </a>
+    <a href="https://www.instagram.com/">
+      <img src="pngtree-instagram-social-platform-icon-png-image_6315976.png" alt="" class="ikona">
+    </a>
+    <a href="https://twitter.com/">
+      <img src="free-twitter-logo-icon-2429-thumb.png" alt="" class="ikona">
+    </a>
+    <a href="https://web.whatsapp.com/">
+      <img src="WhatsApp_icon.png" alt="" class="ikona">
+    </a>
+  </div>
+</div>
+<h1 class="footerLetak">Prijavi se za e-letak i primaj ekskluzivne ponude</h1>
+<div class="footerMail">
+  <input type="text" placeholder="tvoj@email.com" class="footerInput">
+  <button class="footerButton">Pretplati se!</button>
+</div>
+</body>
+</html>

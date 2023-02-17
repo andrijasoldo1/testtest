@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>E-registracija - Prijava na sustav</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <style>
+
+    .card {
+      width: 750px;
+      height: 750px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #007bff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card form {
+      margin: 0;
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .card form h3 {
+      font-weight: bold;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .form-control {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .btn-outline-secondary {
+      background-color: white;
+      color: #6c757d;
+      border-color: #6c757d;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body background="./src/main/resources/templates/cars.png">
+<div class="container vh-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-6">
+      <div class="card">
+        <form th:action="@{/login}" th:object="${user}" method="post">
+          <h3>Prijava na sustav</h3>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" th:field="*{email}" class="form-control" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Lozinka</label>
+            <input type="password" th:field="*{password}" class="form-control" id="password"
+                   required minlength="6" maxlength="10"/>
+          </div>
+          <button type="submit" class="btn btn-block btn-primary">Prijavi se</button>
+          <a href="register" class="mt-2 btn btn-block btn-outline-secondary">Registriraj se</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
