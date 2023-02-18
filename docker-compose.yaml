@@ -16,8 +16,12 @@ services:
     networks:
       - eregistracija-network
     environment:
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=lozinka
       - MYSQL_ROOT_PASSWORD=lozinka
       - MYSQL_DATABASE=eregistracija
+    ports:
+      - 6306:3306
     volumes:
       - mysql-data:/var/lib/mysql
     restart: always
